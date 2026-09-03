@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Srivaru ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #000;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+}
+
+/* =========================
+   COMMON SCREEN
+========================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* =========================
+   TAP TO ENTER SCREEN
+========================= */
+
+.start-screen {
+    background:
+        radial-gradient(circle at center, #250018 0%, #080008 45%, #000 80%);
+    color: white;
+    cursor: pointer;
+}
+
+.start-small {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #ffd3e6;
+    margin-bottom: 35px;
+    animation: fadePulse 2s infinite;
+}
+
+.tap-enter {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 8vw, 45px);
+    color: #ff8fc7;
+    text-shadow:
+        0 0 10px #ff8fc7,
+        0 0 30px #ff238f,
+        0 0 60px #ff006f;
+    animation: tapPulse 1.5s ease-in-out infinite;
+}
+
+.tap-sub {
+    margin-top: 25px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+@keyframes tapPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@keyframes fadePulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   HACKER SCREENS
+========================= */
+
+.hacker {
+    background:
+        radial-gradient(circle at center, #031b0c 0%, #000 65%);
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,255,100,0.5);
+    box-shadow: 0 0 15px #00ff66;
+    animation: scanMove 2s linear infinite;
+}
+
+@keyframes scanMove {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+.warning {
+    color: #ff3333;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 0 15px red;
+    animation: blink 0.7s infinite alternate;
+    margin-bottom: 20px;
+}
+
+@keyframes blink {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.hacker-title {
+    font-size: 22px;
+    margin: 10px;
+    text-shadow: 0 0 12px #00ff66;
+}
+
+.hacker-text {
+    font-size: 16px;
+    margin: 7px;
+    color: #00dd55;
+}
+
+.progress-container {
+    width: 80%;
+    max-width: 450px;
+    height: 20px;
+    border: 1px solid #00ff66;
+    margin-top: 20px;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #00ff66;
+    box-shadow: 0 0 15px #00ff66;
+}
+
+.success {
+    color: #00ff66;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 15px #00ff66;
+}
+
+.secret {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 15px;
+}
+
+/* =========================
+   MEMORY SCREEN
+========================= */
+
+.memories {
+    background:
+        radial-gradient(circle at center, #190018, #050005 55%, #000);
+    color: white;
+}
+
+.memory-heading {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #ffb6d9;
+    text-shadow: 0 0 20px #ff4f9a;
+    margin-bottom: 18px;
+}
+
+.photo-box {
+    width: min(88vw, 430px);
+    height: min(62vh, 500px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.photo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 18px;
+    object-fit: contain;
+    box-shadow:
+        0 0 15px rgba(255,80,160,0.8),
+        0 0 45px rgba(255,30,130,0.4);
+    animation: photoAppear 1.5s ease;
+}
+
+@keyframes photoAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.caption {
+    margin-top: 18px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #ffd7e8;
+    min-height: 45px;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: absolute;
+    bottom: -40px;
+    color: #ff5c9a;
+    font-size: 20px;
+    animation: floatHeart linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   FINAL CINEMATIC SCREEN
+========================= */
+
+.final {
+    background:
+        radial-gradient(circle at 50% 45%, #35001f 0%, #10000c 35%, #000 75%);
+    color: white;
+    overflow: hidden;
+}
+
+.final::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+    background-size: 55px 55px;
+    opacity: 0.25;
+    animation: starsMove 12s linear infinite;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-55px);
+    }
+}
+
+.final-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    animation: finalAppear 2s ease;
+}
+
+@keyframes finalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small-title {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #ffd3e6;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.advance {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 8px;
+    color: #fff;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.birthday {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 8vw, 55px);
+    font-weight: bold;
+    margin-top: 10px;
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #ff9dcc,
+        #fff,
+        #ff5fa2,
+        #fff
+    );
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation:
+        birthdayGlow 4s linear infinite,
+        fadeIn 2s ease forwards;
+    animation-delay: 1.8s;
+    opacity: 0;
+}
+
+@keyframes birthdayGlow {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+.srivaru {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 13vw, 85px);
+    font-weight: bold;
+    margin-top: 15px;
+    color: #ff8fc7;
+    text-shadow:
+        0 0 8px #ff8fc7,
+        0 0 25px #ff3f9d,
+        0 0 55px #ff147f;
+    animation:
+        namePulse 2s ease-in-out infinite,
+        fadeIn 2s ease forwards;
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+
+@keyframes namePulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow:
+            0 0 8px #ff8fc7,
+            0 0 25px #ff3f9d;
+    }
+
+    50% {
+        transform: scale(1.05);
+        text-shadow:
+            0 0 15px #ffb6db,
+            0 0 45px #ff238f,
+            0 0 75px #ff006f;
+    }
+}
+
+.message {
+    max-width: 500px;
+    margin: 28px auto 0;
+    padding: 0 20px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #ffe5f0;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 3.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.final-heart {
+    font-size: 45px;
+    margin-top: 25px;
+    animation: heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.signature {
+    margin-top: 18px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #ffb8d7;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #ff83bb;
+    background: rgba(20,0,15,0.7);
+    color: #ff9dcc;
+    font-size: 20px;
+    display: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .warning {
+        font-size: 23px;
+    }
+
+    .hacker-title {
+        font-size: 18px;
+    }
+
+    .hacker-text {
+        font-size: 14px;
+    }
+
+    .memory-heading {
+        font-size: 23px;
+    }
+
+    .caption {
+        font-size: 16px;
+    }
+
+    .advance {
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     TAP TO ENTER
+===================================== -->
+
+<div class="screen start-screen active" id="startScreen">
+
+    <div class="start-small">
+        ✨ A LITTLE SURPRISE FOR YOU ✨
+    </div>
+
+    <div class="tap-enter">
+        TAP TO ENTER ❤️
+    </div>
+
+    <div class="tap-sub">
+        🎵 Turn your volume on
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 1
+===================================== -->
+
+<div class="screen hacker" id="screen1">
+
+    <div class="scan-line"></div>
+
+    <div class="warning">
+        ⚠ SYSTEM ALERT ⚠
+    </div>
+
+    <div class="hacker-title">
+        UNAUTHORIZED ACCESS DETECTED
+    </div>
+
+    <div class="hacker-text">
+        Initializing security scan...
+    </div>
+
+    <div class="progress-container">
+        <div class="progress" id="scanProgress"></div>
+    </div>
+
+    <div class="hacker-text" id="scanPercent">
+        0%
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 2
+===================================== -->
+
+<div class="screen hacker" id="screen2">
+
+    <div class="success">
+        ✓ SCAN COMPLETE
+    </div>
+
+    <div class="hacker-text">
+        TARGET IDENTIFIED
+    </div>
+
+    <div class="hacker-title">
+        USER: SRIVARU
+    </div>
+
+    <div class="hacker-text">
+        Preparing secure file access...
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 3
+===================================== -->
+
+<div class="screen hacker" id="screen3">
+
+    <div class="hacker-title">
+        🔐 DECRYPTING SECRET FILE
+    </div>
+
+    <div class="hacker-text">
+        Encryption level: EXTREME
+    </div>
+
+    <div class="progress-container">
+        <div class="progress" id="decryptProgress"></div>
+    </div>
+
+    <div class="hacker-text" id="decryptPercent">
+        0%
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 4
+===================================== -->
+
+<div class="screen hacker" id="screen4">
+
+    <div class="success">
+        🔓 SECRET FILE UNLOCKED
+    </div>
+
+    <div class="secret">
+        ACCESS GRANTED ❤️
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 5
+===================================== -->
+
+<div class="screen hacker" id="screen5">
+
+    <div class="warning">
+        WAIT...
+    </div>
+
+    <div class="hacker-text">
+        Something doesn't look right...
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 6
+===================================== -->
+
+<div class="screen hacker" id="screen6">
+
+    <div class="success">
+        I DIDN'T HACK YOUR PHONE 😂
+    </div>
+
+    <div class="secret">
+        Relax... everything is completely safe. ❤️
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 7
+===================================== -->
+
+<div class="screen hacker" id="screen7">
+
+    <div class="hacker-title">
+        ❤️ I ONLY HACKED MY WAY
+    </div>
+
+    <div class="hacker-title">
+        INTO YOUR HEART. ❤️
+    </div>
+
+    <div class="secret">
+        You're still my favourite person.
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 8 - MEMORIES
+===================================== -->
+
+<div class="screen memories" id="screen8">
+
+    <div class="memory-heading">
+        ✨ OUR MEMORIES ✨
+    </div>
+
+    <div class="photo-box">
+
+        <img
+            id="memoryPhoto"
+            src="photos/photo1.jpg"
+            alt="Our Memory"
+        >
+
+    </div>
+
+    <div class="caption" id="photoCaption">
+        A little collection of our memories ❤️
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     SCREEN 9 - FINAL
+===================================== -->
+
+<div class="screen final" id="screen9">
+
+    <div class="final-content">
+
+        <div class="small-title">
+            ✨ A SPECIAL MESSAGE FOR YOU ✨
+        </div>
+
+        <div class="advance">
+            ADVANCE
+        </div>
+
+        <div class="birthday">
+            HAPPY BIRTHDAY
+        </div>
+
+        <div class="srivaru">
+            SRIVARU ❤️
+        </div>
+
+        <div class="message">
+            Some people make ordinary moments
+            feel extraordinary...
+            <br><br>
+
+            And somehow,
+            you became one of my favourite
+            parts of life. ❤️
+            <br><br>
+
+            Here's to more smiles,
+            more memories,
+            more crazy moments,
+            and many more birthdays together. ✨
+        </div>
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <div class="signature">
+            WITH LOTS OF LOVE ✨
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     MUSIC
+===================================== -->
+
+<audio id="birthdayMusic" loop>
+    <source src="music/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicButton">
+    🎵
+</button>
+
+
+<script>
+
+/* =====================================
+   SCREEN CONTROL
+===================================== */
+
+function showScreen(number) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById("screen" + number)
+        .classList.add("active");
+}
+
+
+/* =====================================
+   TAP TO ENTER + MUSIC
+===================================== */
+
+const startScreen = document.getElementById("startScreen");
+const music = document.getElementById("birthdayMusic");
+const musicButton = document.getElementById("musicButton");
+
+let musicPlaying = false;
+
+startScreen.addEventListener("click", function() {
+
+    music.play()
+        .then(() => {
+
+            musicPlaying = true;
+            musicButton.style.display = "block";
+
+        })
+        .catch(() => {});
+
+    startScreen.classList.remove("active");
+
+    setTimeout(() => {
+        startScan();
+    }, 500);
+
+});
+
+
+/* =====================================
+   FAKE SCAN
+===================================== */
+
+function startScan() {
+
+    showScreen(1);
+
+    let progress = 0;
+
+    const bar = document.getElementById("scanProgress");
+    const percent = document.getElementById("scanPercent");
+
+    const interval = setInterval(() => {
+
+        progress += 2;
+
+        bar.style.width = progress + "%";
+        percent.innerText = progress + "%";
+
+        if (progress >= 100) {
+
+            clearInterval(interval);
+
+            setTimeout(() => {
+
+                showScreen(2);
+
+                setTimeout(() => {
+                    startDecrypt();
+                }, 2500);
+
+            }, 700);
+        }
+
+    }, 45);
+}
+
+
+/* =====================================
+   FAKE DECRYPT
+===================================== */
+
+function startDecrypt() {
+
+    showScreen(3);
+
+    let progress = 0;
+
+    const bar = document.getElementById("decryptProgress");
+    const percent = document.getElementById("decryptPercent");
+
+    const interval = setInterval(() => {
+
+        progress += 2;
+
+        bar.style.width = progress + "%";
+        percent.innerText = progress + "%";
+
+        if (progress >= 100) {
+
+            clearInterval(interval);
+
+            setTimeout(() => {
+
+                showScreen(4);
+
+                setTimeout(() => {
+
+                    showScreen(5);
+
+                    setTimeout(() => {
+
+                        showScreen(6);
+
+                        setTimeout(() => {
+
+                            showScreen(7);
+
+                            setTimeout(() => {
+
+                                startMemories();
+
+                            }, 3000);
+
+                        }, 3000);
+
+                    }, 2500);
+
+                }, 2200);
+
+            }, 700);
+        }
+
+    }, 45);
+}
+
+
+/* =====================================
+   MEMORY GALLERY
+===================================== */
+
+const photos = [
+
+    "photos/photo1.jpg",
+    "photos/photo2.jpg",
+    "photos/photo3.jpg",
+    "photos/photo4.jpg",
+    "photos/photo5.jpg",
+    "photos/photo6.jpg",
+    "photos/photo7.jpg",
+    "photos/photo8.jpg"
+
+];
+
+const captions = [
+
+    "A little collection of our memories ❤️",
+
+    "Some moments are simply unforgettable. ❤️",
+
+    "You made ordinary days special. ✨",
+
+    "More memories, more reasons to smile. 😊",
+
+    "Somewhere between these moments... ❤️",
+
+    "My favourite memories have you in them.",
+
+    "And I hope we make many more. 🫶",
+
+    "Happy Birthday, my favourite person. ❤️"
+
+];
+
+let photoIndex = 0;
+
+
+function startMemories() {
+
+    showScreen(8);
+
+    photoIndex = 0;
+
+    changePhoto();
+
+    const gallery = setInterval(() => {
+
+        photoIndex++;
+
+        if (photoIndex < photos.length) {
+
+            changePhoto();
+
+        } else {
+
+            clearInterval(gallery);
+
+            setTimeout(() => {
+
+                showScreen(9);
+
+                startHearts();
+
+            }, 4000);
+
+        }
+
+    }, 4000);
+}
+
+
+function changePhoto() {
+
+    const image = document.getElementById("memoryPhoto");
+    const caption = document.getElementById("photoCaption");
+
+    image.style.animation = "none";
+
+    void image.offsetWidth;
+
+    image.style.animation = "photoAppear 1.5s ease";
+
+    image.src = photos[photoIndex];
+
+    caption.innerText = captions[photoIndex];
+}
+
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML = Math.random() > 0.5
+        ? "❤️"
+        : "✨";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+
+function startHearts() {
+
+    for (let i = 0; i < 20; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 250);
+    }
+
+    setInterval(createHeart, 600);
+}
+
+
+/* =====================================
+   MUSIC BUTTON
+===================================== */
+
+musicButton.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    if (music.paused) {
+
+        music.play();
+
+        musicButton.innerText = "🎵";
+
+    } else {
+
+        music.pause();
+
+        musicButton.innerText = "🔇";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
